@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lista de Vehículos</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<style>
+		.background-container {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url('https://png.pngtree.com/background/20230518/original/pngtree-few-different-colored-sportscars-are-parked-in-a-garage-picture-image_2649537.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+			filter: blur(8px);
+			z-index: -1;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #fff;
+			/* Cambiar el color del texto a blanco */
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 20px;
+		}
+
+		.table-container {
+			width: 80%;
+			margin: 20px auto;
+			background-color: rgb(32, 32, 32);
+			/* Agregar un fondo semitransparente */
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			/* Agregar bordes redondeados */
+			overflow: hidden;
+			/* Ocultar el desbordamiento para los bordes redondeados */
+		}
+
+		table {
+			width: 100%;
+			text-align: center;
+		}
+
+		th {
+			background-color: rgb(255, 255, 255);
+			color: #fff;
+			padding: 15px 0;
+			/* Aumentar el espacio alrededor del texto en las celdas del encabezado */
+		}
+
+		td {
+			padding: 10px 0;
+			color: #fff;
+			/* Añadir color blanco al texto dentro de las celdas */
+			/* Aumentar el espacio alrededor del texto en las celdas */
+		}
+
+		tr:nth-child(even) {
+			background-color: rgb(32, 32, 32);
+		}
+
+		.btn-container {
+			text-align: center;
+			margin-top: 20px;
+		}
+
+		.btn-back {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: rgb(32, 32, 32);
+			border: 1px solid rgb(32, 32, 32);
+			border-radius: 5px;
+			text-decoration: none;
+			color: #fff;
+		}
+
+		.btn-back:hover {
+			background-color: rgb(255, 255, 255);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="background-container"></div>
+	<div class="table-container">
+		<h1>Lista de Vehículos</h1>
+		<table class="table table-sm">
+			<thead>
+				<tr>
+					<th>Placa</th>
+					<th>Marca</th>
+					<th>Modelo</th>
+					<th>Año</th>
+					<th>Estado</th>
+					<th>Valor por Día</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="vehiculo : ${vehiculos}">
+					<td th:text="${vehiculo.placa}"></td>
+					<td th:text="${vehiculo.marca}"></td>
+					<td th:text="${vehiculo.modelo}"></td>
+					<td th:text="${vehiculo.anioFabricacion}"></td>
+					<td th:text="${vehiculo.estado}"></td>
+					<td th:text="${vehiculo.valorPorDia}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-container">
+		<form action="#" th:action="@{/paginas/cliente}" th:method="GET">
+			<input class="btn btn-dark btn-back" type="submit" value="Volver">
+		</form>
+	</div>
+</body>
+
+</html>
